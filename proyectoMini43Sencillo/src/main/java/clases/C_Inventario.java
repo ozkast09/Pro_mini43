@@ -329,6 +329,7 @@ public class C_Inventario {
      
      }
      
+     // metodo para eliminar productos de la base de datos
      public void eliminarProducto(JTextField id){
          
          CConexion objetoConexion=new CConexion();
@@ -351,6 +352,17 @@ public class C_Inventario {
          
      
      
+     }
+     
+   // metodo para limpiar campos de datos
+     
+     public void limpiarCampos(JTextField id, JTextField nombre,JTextField descripcion,JTextField cantidad){
+         
+         id.setText("");
+         nombre.setText("");
+         descripcion.setText("");
+         cantidad.setText("");
+                              
      }
      
 }

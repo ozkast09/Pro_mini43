@@ -268,6 +268,7 @@ public class paginaInventario extends javax.swing.JFrame {
         clases.C_Inventario objetoInventario=new clases.C_Inventario();
         objetoInventario.agregarProducto(txtnombre, txtdescripcion, cbcategoria, cbmarca, cbmedida, bcproveedor, txtcantidad);
         objetoInventario.mostrarInventario(tbinventario);
+        objetoInventario.limpiarCampos(txtid, txtnombre, txtdescripcion, txtcantidad);
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void tbinventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbinventarioMouseClicked
@@ -279,12 +280,14 @@ public class paginaInventario extends javax.swing.JFrame {
         clases.C_Inventario objetoInventario=new clases.C_Inventario();
         objetoInventario.modificarProducto(txtid, txtnombre, txtdescripcion, cbcategoria, cbmarca, cbmedida, bcproveedor, txtcantidad);
         objetoInventario.mostrarInventario(tbinventario);
+        objetoInventario.limpiarCampos(txtid, txtnombre, txtdescripcion, txtcantidad);
     }//GEN-LAST:event_btnactualizarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         clases.C_Inventario objetoInventario=new clases.C_Inventario();
         objetoInventario.eliminarProducto(txtid);
         objetoInventario.mostrarInventario(tbinventario);
+        objetoInventario.limpiarCampos(txtid, txtnombre, txtdescripcion, txtcantidad);
     }//GEN-LAST:event_btneliminarActionPerformed
 
     /**
