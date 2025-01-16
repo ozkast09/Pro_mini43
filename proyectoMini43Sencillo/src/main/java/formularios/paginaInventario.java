@@ -89,6 +89,11 @@ public class paginaInventario extends javax.swing.JFrame {
         });
 
         btnactualizar.setText("Actualizar");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
 
         btneliminar.setText("Eliminar");
 
@@ -254,12 +259,19 @@ public class paginaInventario extends javax.swing.JFrame {
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         clases.C_Inventario objetoInventario=new clases.C_Inventario();
         objetoInventario.agregarProducto(txtnombre, txtdescripcion, cbcategoria, cbmarca, cbmedida, bcproveedor, txtcantidad);
+        objetoInventario.mostrarInventario(tbinventario);
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void tbinventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbinventarioMouseClicked
         clases.C_Inventario objetoInventario=new clases.C_Inventario();
         objetoInventario.seleccionar(tbinventario, txtid, txtnombre, txtdescripcion, cbcategoria, cbmarca, cbmedida, bcproveedor, txtcantidad);
     }//GEN-LAST:event_tbinventarioMouseClicked
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+        clases.C_Inventario objetoInventario=new clases.C_Inventario();
+        objetoInventario.modificarProducto(txtid, txtnombre, txtdescripcion, cbcategoria, cbmarca, cbmedida, bcproveedor, txtcantidad);
+        objetoInventario.mostrarInventario(tbinventario);
+    }//GEN-LAST:event_btnactualizarActionPerformed
 
     /**
      * @param args the command line arguments

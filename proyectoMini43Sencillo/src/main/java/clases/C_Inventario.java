@@ -178,7 +178,7 @@ public class C_Inventario {
         }
     
     }
-    
+    // metodo para agregar producto a la base de datos
     public void agregarProducto(JTextField nombre,JTextField descripcion,JComboBox comboCategoria,JComboBox comboMarca, JComboBox comboMedida,JComboBox comboProveedor, JTextField cantidad){
     CConexion objetoConexion=new CConexion();
     
@@ -213,7 +213,7 @@ public class C_Inventario {
             JOptionPane.showMessageDialog(null,"Error al guardar: "+ e.toString());
         }
     }
-    
+    // metodo para mostrar producto 
      public void mostrarInventario( JTable tablaInventario){
         
         clases.CConexion objetoConexion=new clases.CConexion();
@@ -266,6 +266,7 @@ public class C_Inventario {
         }
    
 }
+     //  metodo para seleccionar producto 
      public void seleccionar (JTable totalInventario, JTextField id, JTextField nombre, JTextField descripcion, JComboBox categoria, JComboBox marca, JComboBox medida, JComboBox proveedor, JTextField cantidad ){
        int fila= totalInventario.getSelectedRow();
         
@@ -282,4 +283,50 @@ public class C_Inventario {
             
         } 
     }
+     // metodo para modificar datos del producto
+     
+     public void modificarProducto(JTextField id,JTextField nombre,JTextField descripcion,JComboBox comboCategoria,JComboBox comboMarca, JComboBox comboMedida,JComboBox comboProveedor, JTextField cantidad){
+         
+         CConexion objetoConexion=new CConexion();
+         
+         String consulta="update Inventario set Inventario.nombre=?,Inventario.descripcion=?,Inventario.fkcategoria=?,Inventario.fkmarca=?,Inventario.fkunidadmedida=?,Inventario.fkproveedor=?,Inventario.cantidad=? where Inventario.id=?";
+         
+         try {
+             CallableStatement cs= objetoConexion.establecerConexion().prepareCall(consulta);
+             
+             cs.setString(1, nombre.getText());
+             cs.setString(2, descripcion.getText());
+             
+             int idCategoria= (int) comboCategoria.getClientProperty(comboCategoria.getSelectedItem());
+             cs.setInt(3, idCategoria);
+             
+             int idMarca= (int) comboMarca.getClientProperty(comboMarca.getSelectedItem());
+             cs.setInt(4, idMarca);
+             
+             int idMedida= (int) comboMedida.getClientProperty(comboMedida.getSelectedItem());
+             cs.setInt(5,idMedida );
+             
+             int idProveedor= (int) comboProveedor.getClientProperty(comboProveedor.getSelectedItem());
+             cs.setInt(6, idProveedor);
+             
+             cs.setInt(7,Integer.parseInt(cantidad.getText()));
+             
+             cs.setInt(8,Integer.parseInt(id.getText()));
+             
+             cs.execute();
+             
+             JOptionPane.showMessageDialog(null,"se modifico correctamente");
+             
+         } catch (Exception e) {
+             JOptionPane.showMessageDialog(null,"error al modificar producto" +e.toString());
+         }
+         
+         finally{
+             objetoConexion.cerrarConexion();
+         }
+     
+     
+     
+     }
+     
 }
