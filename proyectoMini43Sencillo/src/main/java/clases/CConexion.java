@@ -29,7 +29,7 @@ public class CConexion {
             Class.forName("com.mysql.jdbc.Driver");
             conectar=DriverManager.getConnection(cadena,usuario,contraseña);
             
-            JOptionPane.showMessageDialog(null,"se conecto a la base de datos");
+            //JOptionPane.showMessageDialog(null,"se conecto a la base de datos");
        
         } catch (Exception e) {
             
@@ -44,7 +44,7 @@ public class CConexion {
         try {
             if (conectar !=null && !conectar.isClosed()){
             conectar.close();
-            JOptionPane.showMessageDialog(null,"conexion cerrada");
+            //JOptionPane.showMessageDialog(null,"conexion cerrada");
             }
         } catch (Exception e) {
             
