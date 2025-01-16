@@ -329,4 +329,28 @@ public class C_Inventario {
      
      }
      
+     public void eliminarProducto(JTextField id){
+         
+         CConexion objetoConexion=new CConexion();
+         
+         String consulta="delete from Inventario where Inventario.id=?;";
+         
+         try {
+             CallableStatement cs= objetoConexion.establecerConexion().prepareCall(consulta);
+             
+             cs.setInt(1,Integer.parseInt(id.getText()));
+             
+            cs.execute();
+            
+            JOptionPane.showMessageDialog(null,"Producto eliminado");
+         } catch (Exception e) {
+             
+             JOptionPane.showMessageDialog(null,"Error al eliminar producto"+ e.toString());
+         }
+         
+         
+     
+     
+     }
+     
 }

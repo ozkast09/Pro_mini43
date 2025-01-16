@@ -22,6 +22,9 @@ public class paginaInventario extends javax.swing.JFrame {
         objetoInventario.mostrarComboMedida(cbmedida);
         objetoInventario.mostrarComboProveedor(bcproveedor);
         objetoInventario.mostrarInventario(tbinventario);
+        
+        txtid.setEnabled(false);
+        
     }
 
     /**
@@ -96,6 +99,11 @@ public class paginaInventario extends javax.swing.JFrame {
         });
 
         btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -272,6 +280,12 @@ public class paginaInventario extends javax.swing.JFrame {
         objetoInventario.modificarProducto(txtid, txtnombre, txtdescripcion, cbcategoria, cbmarca, cbmedida, bcproveedor, txtcantidad);
         objetoInventario.mostrarInventario(tbinventario);
     }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        clases.C_Inventario objetoInventario=new clases.C_Inventario();
+        objetoInventario.eliminarProducto(txtid);
+        objetoInventario.mostrarInventario(tbinventario);
+    }//GEN-LAST:event_btneliminarActionPerformed
 
     /**
      * @param args the command line arguments
